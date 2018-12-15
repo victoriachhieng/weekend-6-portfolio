@@ -1,7 +1,17 @@
 import React, {Component} from 'react';
+import {connect} from 'react-redux';
 import ProjectList from '../ProjectList/ProjectList';
 
 class ProjectPage extends Component {
+
+    componentDidMount(){
+        this.getProjects();
+    }
+
+    getProjects(){
+        this.props.dispatch({type: 'FETCH_PROJECTS'})
+    }
+    
     render(){
         return (
             <div>
@@ -12,4 +22,10 @@ class ProjectPage extends Component {
     }
 }
 
-export default ProjectPage;
+const mapStateToProps = (reduxStore) => {
+    return{
+        reduxStore
+    }
+}
+
+export default connect(mapStateToProps)(ProjectPage);
