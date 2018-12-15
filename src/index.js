@@ -29,13 +29,13 @@ function* fecthProjects() {
 }
 
 // generator with axios POST 
-function postProjects(action){
-    try{
+function* postProjects(action) {
+    try {
         console.log('in postProjects');
-        yield call(axios.post, '/project', action.payload)
-        yield dispatch({type: 'FETCH_PROJECTS'})
+        yield call(axios.post, '/projects', action.payload)
+        yield dispatch({ type: 'FETCH_PROJECTS'})
     } catch (error) {
-        console.log('in postProjects', error);
+        console.log('error in postProjects', error);
     }
 }
 
