@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import ProjectList from './ProjectList';
+import ProjectList from '../ProjectList/ProjectList';
 
 class ProjectPage extends Component {
     render(){
