@@ -4,8 +4,11 @@ const pool = require('../modules/pool');
 const router = express.Router();
 
 router.get('/', (req, res) => {
-    // return all projects
-  const queryText = `SELECT * FROM projects;`;
+// return all projects along with the tag table
+    const queryText = `SELECT "projects"."id", "projects"."name", "projects"."description", "projects"."thumbnail", "projects"."website", "projects"."github", 
+  "projects"."tag_id", "tags"."name" FROM "projects" 
+  LEFT OUTER JOIN "tags" ON "tags"."id" = "projects"."tag_id"
+  ORDER BY "projects"."id" ASC`;
   pool.query(queryText)
     .then(result => {
       res.send(result.rows);
