@@ -9,11 +9,45 @@ import { Provider } from 'react-redux';
 import logger from 'redux-logger';
 // Import saga middleware
 import createSagaMiddleware from 'redux-saga';
+import axios from 'axios';
 
 // Create the rootSaga generator function
 function* rootSaga() {
-
+    yield takeEvery('SET_PROJECTS', fecthProjects);
+    yield takeEvery('FETCH_PROJECTS', postProjects);
 }
+
+// generator with axios GET call to get DB from projects
+function* fecthProjects() {
+    try {
+        console.log('in fetchProjects triggered!');
+        const fetchResponse = yield call(axios.get, '/projects');
+        yield dispatch({type: 'SET_PROJECTS', payload: fetchResponse.data});
+    } catch (error) {
+        console.log('in fetchProject', error);
+    }
+}
+
+// generator with axios POST 
+function postProjects(action){
+    try{
+        console.log('in postProjects');
+        yield call(axios.post, '/project', action.payload)
+        yield dispatch({type: 'FETCH_PROJECTS'})
+    } catch (error) {
+        console.log('in postProjects', error);
+    }
+}
+
+// // generator with axios DELETE
+// function deleteProject(){
+//     try{
+//         console.log('in deleteProject');
+//     } catch (error) {
+//         console.log('in deleteProject', error);
+//     }
+// }
+
 
 // Create sagaMiddleware
 const sagaMiddleware = createSagaMiddleware();
