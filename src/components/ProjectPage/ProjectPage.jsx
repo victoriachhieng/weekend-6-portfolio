@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import ProjectList from '../ProjectList/ProjectList';
+import Admin from '../Admin/Admin';
 
 class ProjectPage extends Component {
 
@@ -17,6 +18,7 @@ class ProjectPage extends Component {
             <div>
                 <h1>Victoria Chhieng</h1>
                 <ProjectList/>
+                <Admin/>
             </div>
         )
     }
