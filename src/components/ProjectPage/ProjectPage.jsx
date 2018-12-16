@@ -18,7 +18,6 @@ class ProjectPage extends Component {
             <div>
                 <h1>Victoria Chhieng</h1>
                 <ProjectList/>
-                <Admin/>
             </div>
         )
     }
