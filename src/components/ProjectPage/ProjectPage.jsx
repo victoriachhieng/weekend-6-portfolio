@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import ProjectList from '../ProjectList/ProjectList';
-import Admin from '../Admin/Admin';
+import ProjectPageNavBar from '../ProjectPageNavBar/ProjectPageNavbar';
 
 class ProjectPage extends Component {
 
@@ -16,6 +16,7 @@ class ProjectPage extends Component {
     render(){
         return (
             <div>
+                <ProjectPageNavBar/>
                 <h1>Victoria Chhieng</h1>
                 <ProjectList/>
             </div>
