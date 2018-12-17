@@ -31,7 +31,9 @@ class ProjectPage extends Component {
     render(){
         return <div>
             <ProjectPageNavBar />
-            <Avatar alt="Victoria Chhieng" src="/images/goat_small.jpg" />
+            <br/>
+            <br/>
+            <Avatar alt="Victoria Chhieng" src="/images/IMG_8239.jpg" />
             <Typography component="h2" variant="headline" gutterBottom>
               Victoria Chhieng
             </Typography>
