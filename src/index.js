@@ -14,8 +14,10 @@ import axios from 'axios';
 
 // Create the rootSaga generator function
 function* rootSaga() {
-    yield takeEvery('SET_PROJECTS', fecthProjects);
+    yield takeEvery('FETCH_PROJECTS', fecthProjects);
     yield takeEvery('FETCH_PROJECTS', postProjects);
+    yield takeEvery('ADD_PROJECT', postProjects);
+    yield takeEvery('DELETE_PROJECT', deleteProjects);
 }
 
 // generator with axios GET call to get DB from projects
@@ -25,7 +27,7 @@ function* fecthProjects() {
         const fetchResponse = yield call(axios.get, '/projects');
         yield dispatch({type: 'SET_PROJECTS', payload: fetchResponse.data});
     } catch (error) {
-        console.log('in fetchProject', error);
+        console.log('error in fetchProject', error);
     }
 }
 
@@ -40,14 +42,17 @@ function* postProjects(action) {
     }
 }
 
-// // generator with axios DELETE
-// function deleteProject(){
-//     try{
-//         console.log('in deleteProject');
-//     } catch (error) {
-//         console.log('in deleteProject', error);
-//     }
-// }
+// generator with axios DELETE
+function* deleteProjects(action) {
+    try {
+        console.log("in deleteProject");
+        yield call(axios.delete, `/projects/${action.payload}`);
+        yield dispatch({ type: 'FETCH_PROJECTS' });
+    } catch (error) {
+        console.log(error);
+        yield alert('error in deletingProject', error)
+    }
+}
 
 
 // Create sagaMiddleware

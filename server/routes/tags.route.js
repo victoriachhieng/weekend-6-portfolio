@@ -1,4 +1,4 @@
-const express = require('require');
+const express = require('express');
 const pool = require('../modules/pool');
 
 const router = express.Router();
@@ -9,8 +9,8 @@ router.get('/', (req, res) => {
     pool.query(queryText)
         .then(result => {
             res.send(result.rows);
-        }).catch(err => {
-            console.log(`Error making query ${queryText}`, err);
+        }).catch(error => {
+            console.log(`Error making query ${queryText}`, error);
             res.sendStatus(500);
         });
 });

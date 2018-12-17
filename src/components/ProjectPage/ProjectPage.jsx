@@ -12,6 +12,7 @@ class ProjectPage extends Component {
     getProjects(){
         this.props.dispatch({type: 'FETCH_PROJECTS'})
     }
+
     
     render(){
         return (
