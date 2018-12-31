@@ -1,13 +1,8 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import Grid from "@material-ui/core/Grid";
-import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import Card from "@material-ui/core/Card";
-import CardActionArea from "@material-ui/core/CardActionArea";
-import CardActions from "@material-ui/core/CardActions";
-import CardContent from "@material-ui/core/CardContent";
-import CardMedia from "@material-ui/core/CardMedia";
 
 class ProjectList extends Component {
   componentDidMount() {
@@ -18,57 +13,44 @@ class ProjectList extends Component {
     this.props.dispatch({ type: "FETCH_PROJECTS" });
   }
 
-  handleDelete(project) {
-    this.props.dispatch({ type: "DELETE_PROJECT", payload: project.id });
-    alert("Project deleted!");
-  }
-
   render() {
-    let projectList = this.props.reduxStore.projects.map(projects => {
-      console.log(projects);
+    let newCard = this.props.reduxStore.projects.map(project => {
       return (
-        <div key={projects.id}>
-          <Card>
-              <CardActionArea>
-                  <CardMedia
-                      className="media"
-                      image={projects.thumbnail}
-                      title="pizza"
-                  />
-                  <CardContent>
-                      <Typography gutterBottom variant="h5" component="h2">
-                          {projects.name}
-                      </Typography>
-                      <Typography gutterBottom component="p">
-                          <a href={projects.website}>Website</a>
-                      </Typography>
-                      <Typography component="p">
-                          <a href={projects.github}>Github</a>
-                      </Typography>
-                      <Typography component="p">
-                          {projects.description}
-                      </Typography>
-                  </CardContent>
-              </CardActionArea>
-              <CardActions>
-                  <Button
-                      size="small"
-                      variant="contained"
-                      color="secondary"
-                      onClick={() => this.handleDelete(projects)}>
-                      Delete
-              </Button>
-              </CardActions>
-          </Card>
-          </div>
+        <Grid container justify="center">
+        <Card key={project.id}>
+         <center><h4>{project.name}</h4>
+          <img src={project.thumbnail} width="450" alt="project" />
+          <p>{project.description}</p>
+          <p>
+            <a href={project.website}>
+              {project.website}
+            </a>
+          </p>
+          <p>
+            <a href={project.github}>
+              {project.github}
+            </a>
+          </p></center>
+        </Card>
+        </Grid>
       );
     });
-    return <div>
-        <Typography component="h2" variant="headline" gutterBottom>
-          Projects
-        </Typography>
-        <ul>{projectList}</ul>
-      </div>;
+    return (
+      <div>
+        <Grid container justify="center" alignItems="center">
+          <Typography variant="h6" color="secondary">
+            <Typography component="h2" variant="display2" gutterBottom>
+              Projects
+            </Typography>
+          </Typography>
+        </Grid>
+        <Grid container justify="center">
+          <Grid item xs={6}>
+            {newCard}
+          </Grid>
+        </Grid>
+      </div>
+    );
   }
 }
 

@@ -4,18 +4,6 @@ import ProjectList from '../ProjectList/ProjectList';
 import ProjectPageNavBar from '../ProjectPageNavBar/ProjectPageNavbar';
 import Avatar from "@material-ui/core/Avatar";
 import Grid from "@material-ui/core/Grid";
-import Typography from "@material-ui/core/Typography";
-
-const styles = {
-    avatar: {
-        margin: 10,
-    },
-    bigAvatar: {
-        margin: 10,
-        width: 500,
-        height: 500,
-    },
-};
 
 class ProjectPage extends Component {
 
@@ -27,16 +15,37 @@ class ProjectPage extends Component {
         this.props.dispatch({type: 'FETCH_PROJECTS'})
     }
 
-    
     render(){
         return <div>
             <ProjectPageNavBar />
-            <br/>
-            <br/>
-            <Avatar alt="Victoria Chhieng" src="/images/IMG_8239.jpg" />
-            <Typography component="h2" variant="headline" gutterBottom>
-              Victoria Chhieng
-            </Typography>
+            <br />
+            <br />
+            <Grid container justify="center" alignItems="center">
+              <div class="container">
+                <img src="/images/IMG_8239.jpg" alt="Avatar" class="image" />
+                <div class="overlay">
+                  <div class="text">Well, Hello World!</div>
+                </div>
+              </div>
+            </Grid>
+            <Grid container justify="center" alignItems="center">
+              <Avatar>V</Avatar>
+              <Avatar>I</Avatar>
+              <Avatar>C</Avatar>
+              <Avatar>T</Avatar>
+              <Avatar>O</Avatar>
+              <Avatar>R</Avatar>
+              <Avatar>I</Avatar>
+              <Avatar>A</Avatar>
+              <Avatar />
+              <Avatar>C</Avatar>
+              <Avatar>H</Avatar>
+              <Avatar>H</Avatar>
+              <Avatar>I</Avatar>
+              <Avatar>E</Avatar>
+              <Avatar>N</Avatar>
+              <Avatar>G</Avatar>
+            </Grid>
             <ProjectList />
           </div>;
     }

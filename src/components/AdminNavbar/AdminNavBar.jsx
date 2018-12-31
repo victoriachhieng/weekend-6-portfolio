@@ -30,14 +30,18 @@ class AdminNavBar extends Component {
         <MuiThemeProvider theme={theme}>
           <AppBar className="navbar" position="static" color="primary">
             <Toolbar>
+            <Grid container justify="center" alignItems="center">
               <Typography variant="h6" color="secondary">
                 <Typography component="h2" variant="display4" gutterBottom>
                   Administrator
                 </Typography>
-              <Button size="small" variant="contained" color="default" onClick={this.handleClick}>
+                <Grid container justify="center" alignItems="center">
+              <Button size="large" variant="contained" color="default" onClick={this.handleClick}>
                 Back to Portfolio
                 </Button>
+                </Grid>
               </Typography>
+              </Grid>
             </Toolbar>
           </AppBar>
         </MuiThemeProvider>

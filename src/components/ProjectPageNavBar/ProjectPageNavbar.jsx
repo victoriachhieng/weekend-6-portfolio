@@ -19,6 +19,7 @@ const theme = createMuiTheme({
   }
 });
 
+
 class ProjectPageNavBar extends Component {
     
     handleClick = () => {
@@ -30,14 +31,18 @@ class ProjectPageNavBar extends Component {
         return <MuiThemeProvider theme={theme}>
             <AppBar className="navbar" position="static" color="primary">
               <Toolbar>
+              <Grid container justify="center" alignItems="center">
                 <Typography variant="h6" color="secondary">
                   <Typography component="h2" variant="display4" gutterBottom>
-                    Portfolio
+                  Portfolio
                   </Typography>
-                  <Button size="small" variant="contained" color="default" onClick={this.handleClick}>
+                  <Grid container justify="center" alignItems="center">
+                  <Button size="large" variant="contained" color="default" onClick={this.handleClick}>
                     Administrator Page
                   </Button>
+                  </Grid>
                 </Typography>
+                </Grid>
               </Toolbar>
             </AppBar>
           </MuiThemeProvider>;
