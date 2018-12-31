@@ -46,6 +46,7 @@ class ProjectPage extends Component {
               <Avatar>N</Avatar>
               <Avatar>G</Avatar>
             </Grid>
+            <br/>
             <ProjectList />
           </div>;
     }
