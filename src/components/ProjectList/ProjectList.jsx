@@ -15,28 +15,23 @@ class ProjectList extends Component {
 
   render() {
     let newCard = this.props.reduxStore.projects.map(project => {
-      return (
-        <Grid container justify="center">
-        <Card key={project.id}>
-         <center><h4>{project.name}</h4>
-          <img src={project.thumbnail} width="450" alt="project" />
-          <p>{project.description}</p>
-          <p>
-            <a href={project.website}>
-              {project.website}
-            </a>
-          </p>
-          <p>
-            <a href={project.github}>
-              {project.github}
-            </a>
-          </p></center>
-        </Card>
-        </Grid>
-      );
+      return <Grid container justify="center" item xs={6}>
+          <Card key={project.id} style={cardStyle}>
+            <center>
+              <h4>{project.name_of_project}</h4>
+              <img src={project.thumbnail} width="450" alt="project" />
+              <p>{project.description}</p>
+              <p>
+                <a href={project.website}>{project.website}</a>
+              </p>
+              <p>
+                <a href={project.github}>{project.github}</a>
+              </p>
+            </center>
+          </Card>
+        </Grid>;
     });
-    return (
-      <div>
+    return <div>
         <Grid container justify="center" alignItems="center">
           <Typography variant="h6" color="secondary">
             <Typography component="h2" variant="display2" gutterBottom>
@@ -45,14 +40,21 @@ class ProjectList extends Component {
           </Typography>
         </Grid>
         <Grid container justify="center">
-          <Grid item xs={6}>
+          <Grid container item xs={12}>
             {newCard}
           </Grid>
         </Grid>
-      </div>
-    );
+      </div>;
   }
 }
+
+const cardStyle = {
+  minWidth: "400px",
+  fontFamily: "Arial, Helvetica, sans - serif",
+  margin: "20px",
+  textAlign: "center",
+  border: "1px solid #000000",
+};
 
 const mapStateToProps = reduxStore => {
   return {

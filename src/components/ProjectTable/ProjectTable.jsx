@@ -30,7 +30,7 @@ class ProjectTable extends Component {
         <Grid container justify="center" alignItems="center">
           <TableRow key={project.id} id={project.id}>
             <SnackbarContent
-              message={project.name}
+              message={project.name_of_project}
               action={
                 <Button
                   size="small"

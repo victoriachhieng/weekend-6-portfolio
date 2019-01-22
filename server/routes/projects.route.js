@@ -5,7 +5,7 @@ const router = express.Router();
 
 router.get('/', (req, res) => {
 // return all projects along with the tag table
-    const queryText = `SELECT "projects"."id", "projects"."name", "projects"."description", "projects"."thumbnail", "projects"."website", "projects"."github", 
+    const queryText = `SELECT "projects"."id", "projects"."name_of_project", "projects"."description", "projects"."thumbnail", "projects"."website", "projects"."github", 
   "projects"."tag_id", "tags"."name" FROM "projects" 
   LEFT OUTER JOIN "tags" ON "tags"."id" = "projects"."tag_id"
   ORDER BY "projects"."id" ASC`;
@@ -20,10 +20,10 @@ router.get('/', (req, res) => {
 
 router.post('/', (req, res) => {
    const newProject = req.body;
-   const queryText = `INSERT INTO projects ("name", "description", "website", "github", "date_completed", "tag_id", "thumbnail")
-                     VALUES ($1, $2, $3, $4, $5, $6, $7)`;
+   const queryText = `INSERT INTO "projects" ("name_of_project", "description", "website", "github", "date_completed", "tag_id", "thumbnail")
+                     VALUES ($1, $2, $3, $4, $5, $6, $7);`;
    const queryValues = [
-     newProject.name,
+     newProject.name_of_project,
      newProject.description,
      newProject.website,
      newProject.github,
@@ -35,7 +35,7 @@ router.post('/', (req, res) => {
      .then(() => { 
        res.sendStatus(201); 
      }).catch(error => {
-       console.log(error);
+       console.log('error in post route', error);
        res.sendStatus(500);
      });
  });
