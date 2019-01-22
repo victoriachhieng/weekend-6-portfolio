@@ -14,7 +14,7 @@ class ProjectList extends Component {
     render() {
           let projectList = this.props.reduxStore.projects.map((project) => {
             return <div key={project.id}>
-                    <p>{project.name}</p>
+                    <p>{project.name_of_project}</p>
                     <p>{project.description}</p>
                     <p>{project.thumbnail}</p>
                     <p><a href={project.github}>Github</a></p>
